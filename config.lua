@@ -23,4 +23,17 @@ Config.DeliveryLocations = {
         showblip    = true,
         showmarker  = true
     },
+    {   -- valentine -> blackwater
+        name        = 'Blackwater Delivery',
+        deliveryid  = 'delivery2',
+        cartspawn   = vector4(-343.9931, 809.86401, 116.6878, 132.8083), 
+        cart        = 'wagon04x',
+        cargo       = 'pg_teamster_wagon04x_perishables',
+        light       = 'pg_teamster_wagon04x_lightupgrade3',
+        startcoords = vector3(-339.0577, 814.22424, 116.96039), -- 125.19566
+        endcoords   = vector3(-739.7944, -1354.417, 43.461048),
+        showgps     = true,
+        showblip    = true,
+        showmarker  = true
+    },
 }
