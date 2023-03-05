@@ -21,7 +21,7 @@ Citizen.CreateThread(function()
         exports['rsg-core']:createPrompt(v.deliveryid, v.startcoords, RSGCore.Shared.Keybinds['J'], v.name, {
             type = 'client',
             event = 'rsg-delivery:client:vehiclespawn',
-            args = { v.deliveryid, v.cart, v.cartspawn, v.cargo, v.light, v.endcoords },
+            args = { v.deliveryid, v.cart, v.cartspawn, v.cargo, v.light, v.endcoords, v.showgps },
         })
         if v.showblip == true then
             local DeliveryBlip = Citizen.InvokeNative(0x554D9D53F696D002, 1664425300, v.startcoords)
@@ -33,7 +33,7 @@ Citizen.CreateThread(function()
 end)
 
 RegisterNetEvent('rsg-delivery:client:vehiclespawn')
-AddEventHandler('rsg-delivery:client:vehiclespawn', function(deliveryid, cart, cartspawn, cargo, light, endcoords)
+AddEventHandler('rsg-delivery:client:vehiclespawn', function(deliveryid, cart, cartspawn, cargo, light, endcoords, showgps)
     if wagonSpawned == false then
         local playerPed = PlayerPedId()
         local carthash = GetHashKey(cart)
@@ -65,9 +65,11 @@ AddEventHandler('rsg-delivery:client:vehiclespawn', function(deliveryid, cart, c
         Citizen.InvokeNative(0xD80FAF919A2E56EA, vehicle, cargohash)
         Citizen.InvokeNative(0xC0F0417A90402742, vehicle, lighthash)
         TaskEnterVehicle(playerPed, vehicle, 10000, -1, 1.0, 1, 0)
-        StartGpsMultiRoute(GetHashKey("COLOR_RED"), true, true)
-        AddPointToGpsMultiRoute(endcoords)
-        SetGpsMultiRouteRender(true)
+        if showgps == true then
+            StartGpsMultiRoute(GetHashKey("COLOR_RED"), true, true)
+            AddPointToGpsMultiRoute(endcoords)
+            SetGpsMultiRouteRender(true)
+        end
         wagonSpawned = true
         while true do
             local sleep = 1000
