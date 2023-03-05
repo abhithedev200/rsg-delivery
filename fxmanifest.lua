@@ -6,7 +6,8 @@ author 'RexShack#3041'
 description 'rsg-delivery'
 
 client_scripts {
-    'client/client.lua'
+    'client/client.lua',
+    'client/menu.lua',
 }
 
 server_scripts {
