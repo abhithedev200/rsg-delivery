@@ -80,6 +80,8 @@ AddEventHandler('rsg-delivery:client:vehiclespawn', function(deliveryid, cart, c
                     DrawText3D(endcoords.x, endcoords.y, endcoords.z + 0.98, "DELIVERY POINT")
                     if #(playerpos - endcoords) < 3.0 then
                         SetEntityAsMissionEntity(vehicle, true, true)
+                        Citizen.InvokeNative(0x58AC173A55D9D7B4, cargohash, false, false)
+                        Citizen.InvokeNative(0x58AC173A55D9D7B4, lighthash, false, false)
                         DeleteVehicle(vehicle)
                         TriggerServerEvent('rsg-delivery:server:givereward', cashreward)
                         wagonSpawned = false
