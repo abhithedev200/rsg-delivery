@@ -2,11 +2,21 @@
 - discord : https://discord.gg/s5uSk56B65
 - github : https://github.com/Rexshack-RedM
 
-# Warning (testing)
-- this is currently WIP do not use
+# Warning
+- this resource is still in development / testing
+- do NOT use in production
 
-# What it is:
-- going to create multiple delivery jobs
+# Dependancies
+- rsg-core
+- rsg-npcs
+
+# Installation
+- ensure that the dependancies are added and started
+- add rsg-delivery to your resources folder
+- add the NPCs Config to rsg-npcs -> config.lua
+
+# Starting the resource
+- add the following to your server.cfg file : ensure rsg-delivery
 
 # NPCs Config
 ```lua
