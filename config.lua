@@ -82,6 +82,18 @@ Config.DeliveryLocations = {
         showgps     = true,
         showblip    = true
     },
+    {   -- oil fields -> van horn  ( distance 2528 / $25.28)
+        name        = 'The Oil Run',
+        deliveryid  = 'delivery7',
+        cartspawn   = vector4(439.78543, 699.36962, 116.86561, 122.11738), 
+        cart        = 'oilWagon02x',
+        cargo       = '',
+        light       = '',
+        startcoords = vector3(444.06781, 695.92626, 116.71598),
+        endcoords   = vector3(2964.2658, 563.59588, 44.368358),
+        showgps     = true,
+        showblip    = true
+    },
 }
 
 -- https://github.com/femga/rdr3_discoveries/blob/f729ba03f75a591ce5c841642dc873345242f612/vehicles/vehicle_modding/vehicle_propsets.lua
