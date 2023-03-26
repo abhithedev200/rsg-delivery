@@ -82,7 +82,7 @@ AddEventHandler('rsg-delivery:client:vehiclespawn', function(deliveryid, cart, c
                         --SetEntityAsMissionEntity(vehicle, true, true)
                         --Citizen.InvokeNative(0x58AC173A55D9D7B4, cargohash, false, false)
                         --Citizen.InvokeNative(0x58AC173A55D9D7B4, lighthash, false, false)
-                        if showgps == true
+                        if showgps == true then
                             ClearGpsMultiRoute(endcoords)
                         end
                         DeleteVehicle(vehicle)
