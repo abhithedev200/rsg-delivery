@@ -1,6 +1,6 @@
 Config = {}
 
-Config.Debug = true
+Config.Debug = false
 
 Config.Blip = {
     blipName = 'Delivery Job', -- Config.Blip.blipName
