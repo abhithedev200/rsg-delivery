@@ -10,6 +10,7 @@ local missionactive = false
 
 -- mission timer
 local function MissionTimer(missiontime, vehicle, endcoords)
+    
     MissionSecondsRemaining = (missiontime * 60)
 
     Citizen.CreateThread(function()
@@ -31,6 +32,7 @@ local function MissionTimer(missiontime, vehicle, endcoords)
             else
                 lib.hideTextUI()
             end
+            Wait(0)
         end
     end)
 end
