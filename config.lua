@@ -19,6 +19,7 @@ Config.DeliveryLocations = {
         light       = 'pg_teamster_wagon04x_lightupgrade3',
         startcoords = vector3(2904.1989, -1169.292, 46.112228),
         endcoords   = vector3(-350.7503, 788.47381, 116.0307),
+        missiontime = 20, -- in mins
         showgps     = true,
         showblip    = true
     },
@@ -31,6 +32,7 @@ Config.DeliveryLocations = {
         light       = 'pg_teamster_wagon04x_lightupgrade3',
         startcoords = vector3(-339.0577, 814.22424, 116.96039),
         endcoords   = vector3(-739.7944, -1354.417, 43.461048),
+        missiontime = 20, -- in mins
         showgps     = true,
         showblip    = true
     },
@@ -43,6 +45,7 @@ Config.DeliveryLocations = {
         light       = 'pg_teamster_cart01_lightupgrade3',
         startcoords = vector3(-743.7046, -1218.822, 43.29129),
         endcoords   = vector3(-1792.688, -434.3452, 155.59338),
+        missiontime = 20, -- in mins
         showgps     = true,
         showblip    = true
     },
@@ -55,6 +58,7 @@ Config.DeliveryLocations = {
         light       = 'pg_teamster_wagon02x_lightupgrade3',
         startcoords = vector3(-1798.899, -425.6275, 156.37739),
         endcoords   = vector3(-2381.418, -2384.764, 61.069843),
+        missiontime = 20, -- in mins
         showgps     = true,
         showblip    = true
     },
@@ -67,6 +71,7 @@ Config.DeliveryLocations = {
         light       = 'pg_teamster_wagon05x_lightupgrade3',
         startcoords = vector3(-2357.585, -2367.583, 62.18066),
         endcoords   = vector3(-5521.942, -2938.532, -1.995861),
+        missiontime = 20, -- in mins
         showgps     = true,
         showblip    = true
     },
@@ -79,6 +84,7 @@ Config.DeliveryLocations = {
         light       = 'pg_teamster_wagon02x_lightupgrade3',
         startcoords = vector3(-5529.143, -2932.52, -1.95342),
         endcoords   = vector3(3017.0349, 1438.4769, 46.421833),
+        missiontime = 20, -- in mins
         showgps     = true,
         showblip    = true
     },
@@ -91,6 +97,7 @@ Config.DeliveryLocations = {
         light       = '',
         startcoords = vector3(444.06781, 695.92626, 116.71598),
         endcoords   = vector3(2964.2658, 563.59588, 44.368358),
+        missiontime = 20, -- in mins
         showgps     = true,
         showblip    = true
     },

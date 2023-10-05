@@ -4,6 +4,36 @@ local cargohash = nil
 local lighthash = nil
 local distance = nil
 local wagonSpawned = false
+local MissionSecondsRemaining = 0
+local missiontime = 0
+local missionactive = false
+
+-- mission timer
+local function MissionTimer(missiontime, vehicle, endcoords)
+    MissionSecondsRemaining = (missiontime * 60)
+
+    Citizen.CreateThread(function()
+        while true do
+            if MissionSecondsRemaining > 0 then
+                Wait(1000)
+                MissionSecondsRemaining = MissionSecondsRemaining - 1
+                if MissionSecondsRemaining == 0 and wagonSpawned == true then
+                    ClearGpsMultiRoute(endcoords)
+                    endcoords = nil
+                    DeleteVehicle(vehicle)
+                    wagonSpawned = false
+                    missionactive = false
+                    lib.notify({ title = 'Delivery Failed', description = 'you ran out of time, mission failed', type = 'error' })
+                end
+            end
+            if missionactive == true then
+                lib.showTextUI('Delivery Time Remaining: '..MissionSecondsRemaining)
+            else
+                lib.hideTextUI()
+            end
+        end
+    end)
+end
 
 function DrawText3D(x, y, z, text)
     local onScreen,_x,_y=GetScreenCoordFromWorldCoord(x, y, z)
@@ -21,7 +51,7 @@ Citizen.CreateThread(function()
         exports['rsg-core']:createPrompt(v.deliveryid, v.startcoords, RSGCore.Shared.Keybinds['J'], v.name, {
             type = 'client',
             event = 'rsg-delivery:client:vehiclespawn',
-            args = { v.deliveryid, v.cart, v.cartspawn, v.cargo, v.light, v.endcoords, v.showgps },
+            args = { v.deliveryid, v.cart, v.cartspawn, v.cargo, v.light, v.endcoords, v.showgps, v.missiontime },
         })
         if v.showblip == true then
             local DeliveryBlip = Citizen.InvokeNative(0x554D9D53F696D002, 1664425300, v.startcoords)
@@ -33,7 +63,7 @@ Citizen.CreateThread(function()
 end)
 
 RegisterNetEvent('rsg-delivery:client:vehiclespawn')
-AddEventHandler('rsg-delivery:client:vehiclespawn', function(deliveryid, cart, cartspawn, cargo, light, endcoords, showgps)
+AddEventHandler('rsg-delivery:client:vehiclespawn', function(deliveryid, cart, cartspawn, cargo, light, endcoords, showgps, missiontime)
     if wagonSpawned == false then
         local playerPed = PlayerPedId()
         local carthash = GetHashKey(cart)
@@ -71,6 +101,8 @@ AddEventHandler('rsg-delivery:client:vehiclespawn', function(deliveryid, cart, c
             SetGpsMultiRouteRender(true)
         end
         wagonSpawned = true
+        missionactive = true
+        MissionTimer(missiontime, vehicle, endcoords)
         while true do
             local sleep = 1000
             if wagonSpawned == true then
@@ -86,6 +118,8 @@ AddEventHandler('rsg-delivery:client:vehiclespawn', function(deliveryid, cart, c
                         DeleteVehicle(vehicle)
                         TriggerServerEvent('rsg-delivery:server:givereward', cashreward)
                         wagonSpawned = false
+                        missionactive = false
+                        lib.notify({ title = 'Delivery Sucessful', description = 'you completed your delivery', type = 'success' })
                     end
                 end
             end

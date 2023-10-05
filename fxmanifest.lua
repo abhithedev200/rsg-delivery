@@ -4,7 +4,14 @@ game 'rdr3'
 
 author 'RexShack#3041'
 description 'rsg-delivery'
-version '1.0.0'
+version '1.0.1'
+
+shared_scripts {
+    '@ox_lib/init.lua',
+    '@rsg-core/shared/locale.lua',
+    'locales/en.lua', -- preferred language
+    'config.lua',
+}
 
 client_scripts {
     'client/client.lua',
@@ -15,14 +22,9 @@ server_scripts {
     'server/server.lua'
 }
 
-shared_scripts {
-    '@rsg-core/shared/locale.lua',
-    'locales/en.lua', -- preferred language
-    'config.lua',
-}
-
 dependencies {
     'rsg-core',
+    'ox_lib',
 }
 
 lua54 'yes'
