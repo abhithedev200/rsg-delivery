@@ -26,7 +26,6 @@ local function MissionTimer(missiontime, vehicle, endcoords)
                     DeleteVehicle(vehicle)
                     wagonSpawned = false
                     missionactive = false
-                    --TriggerEvent('rNotify:NotifyLeft', "Delivery Failed", 'you ran out of time, mission failed', "generic_textures", "star", 1000)
                     lib.notify({ title = 'Delivery Failed', description = 'you ran out of time, mission failed', type = 'error' })
                 end
             end
