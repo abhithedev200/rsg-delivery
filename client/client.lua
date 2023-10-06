@@ -36,11 +36,17 @@ local function MissionTimer(missiontime, vehicle, endcoords)
 
     Citizen.CreateThread(function()
         while true do
-            if not lib.isTextUIOpen() then
+
+        
+            if not missionactive then
+                -- Hide the ui and stop the loop if the mission is not active
+                lib.hideTextUI()
+                break
+            end
+
+            -- Show the ui only if the mission is active
+            if not lib.isTextUIOpen()  then
                 lib.showTextUI('Delivery Time Remaining: '.. MissionSecondsRemaining)
-                if not missionactive then
-                    lib.hideTextUI()
-                end
             end
             Wait(0)
         end
